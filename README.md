@@ -52,6 +52,8 @@ Use `Shift+Insert` to paste from clipboard.
 | `C-x u` (`C-/`)| OK | Undo |
 | `C-;` | △ | Toggle line comment in and out |
 | `M-;` | △ | Toggle region comment in and out |
+| `C-x C-l` | OK | Convert to lower case |
+| `C-x C-u` | OK | Convert to upper case |
 
 ### Other Command
 |Command | Status | Desc |
