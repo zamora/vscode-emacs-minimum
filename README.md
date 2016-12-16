@@ -69,9 +69,8 @@ Use `Shift+Insert` to paste from clipboard.
 ### File Command
 |Command | Status | Desc |
 |--------|--------|------|
-| `C-o` | OK | Open a file |
-| `C-x b` | OK | QuickOpen a file |
-| `C-x C-f` | OK | Open a working directory |
+| `C-x b` | OK | QuickOpen a buffer |
+| `C-x C-f` | OK | QuickOpen a file |
 | `C-x C-s` | OK | Save |
 | `C-x C-w` | OK | Save as |
 | `C-x i` | - | Insert buffer from file |
