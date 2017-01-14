@@ -262,4 +262,10 @@ export class Editor {
         }  
         return;
     }
+
+    deleteLine() : void {
+        vscode.commands.executeCommand("emacs.exitMarkMode"); // emulate Emacs
+        vscode.commands.executeCommand("editor.action.deleteLines");
+        return;
+    }   
 }

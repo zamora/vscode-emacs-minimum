@@ -41,6 +41,7 @@ Use `Shift+Insert` to paste from clipboard.
 | `C-h` | OK | Delete left (BACKSPACE) |
 | `M-d` | OK | Delete word |
 | `C-k` | OK | Kill to line end |
+| `C-S-Bksp` | OK | Kill entire line |
 | `C-w` | OK | Kill region |
 | `M-w` | OK | Copy region to kill ring |
 | `C-y` | OK | Yank |
@@ -52,6 +53,8 @@ Use `Shift+Insert` to paste from clipboard.
 | `C-x u` (`C-/`)| OK | Undo |
 | `C-;` | △ | Toggle line comment in and out |
 | `M-;` | △ | Toggle region comment in and out |
+| `C-x C-l` | OK | Convert to lower case |
+| `C-x C-u` | OK | Convert to upper case |
 
 ### Other Command
 |Command | Status | Desc |
@@ -69,9 +72,8 @@ Use `Shift+Insert` to paste from clipboard.
 ### File Command
 |Command | Status | Desc |
 |--------|--------|------|
-| `C-o` | OK | Open a file |
-| `C-x b` | OK | QuickOpen a file |
-| `C-x C-f` | OK | Open a working directory |
+| `C-x b` | OK | QuickOpen a buffer |
+| `C-x C-f` | OK | QuickOpen a file |
 | `C-x C-s` | OK | Save |
 | `C-x C-w` | OK | Save as |
 | `C-x i` | - | Insert buffer from file |
