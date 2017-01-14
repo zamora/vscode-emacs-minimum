@@ -11,25 +11,13 @@ export class Operation {
                 this.editor.kill();
             },
             'C-w': () => {
-                if (this.editor.cut()) {
-                    this.editor.setStatusBarMessage("Cut");
-                } else {
-                    this.editor.setStatusBarMessage("Cut Error!");
-                }
+                this.editor.cut()
             },
             'M-w': () => {
-                if (this.editor.copy()) {
-                    this.editor.setStatusBarMessage("Copy");
-                } else {
-                    this.editor.setStatusBarMessage("Copy Error!");
-                }
+                this.editor.copy()
             },
             'C-y': () => {
-                if(this.editor.yank()) {
-                    this.editor.setStatusBarMessage("Yank");
-                } else {
-                    this.editor.setStatusBarMessage("Kill ring is empty");
-                }
+                this.editor.yank()
             },
             "C-x_C-o": () => {
                 this.editor.deleteBlankLines();

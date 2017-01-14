@@ -57,7 +57,6 @@ function initMarkMode(context: vscode.ExtensionContext): void {
         'emacs.enterMarkMode', () => {
             initSelection();
             inMarkMode = true;
-            vscode.window.setStatusBarMessage("Mark Set", 1000);
         })
     );
 
@@ -66,7 +65,6 @@ function initMarkMode(context: vscode.ExtensionContext): void {
             vscode.commands.executeCommand("cancelSelection");
             if (inMarkMode) {
                 inMarkMode = false;
-                vscode.window.setStatusBarMessage("Mark deactivated", 1000);
             }
         })
     );
