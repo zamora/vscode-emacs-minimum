@@ -334,6 +334,18 @@
         "when": "editorTextFocus"
       },
       {
+        "key": "ctrl+x k",
+        "command": "workbench.action.closeActiveEditor"
+      },
+      {
+        "key": "ctrl+x ctrl-k",
+        "command": "workbench.action.closeAllEditors"
+      },
+      { "key": "ctrl+x k",
+        "command": "workbench.action.closeWindow",
+        "when": "!editorIsOpen"
+      },
+      {
         "key": "ctrl+p",
         "command": "showPrevParameterHint",
         "when": "editorTextFocus && parameterHintsVisible"
