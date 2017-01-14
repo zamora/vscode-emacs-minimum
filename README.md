@@ -1,12 +1,15 @@
+# Fork information
+
+This is a personal fork merging some of the oustanding pull requests that the original lacked.
+
+The clipboard handling is also simplified, by the removal of the emacs-only kill ring (which was also an unfinished implementation at the time). Copy, Cut, Yank and C-K work with the system clipboard now.
+
+
 # vscode-emacs
 
-This is emacs like plugin for Visual Studio Code.
+This plugin provides emacs keybindings and workflow for Visual Studio Code.
 
-## Operation
-Use `Shift+DEL` to cut to clipboard, the `Ctrl+C` is not overridden.
-Use `Shift+Insert` to paste from clipboard.
-
-### Move command
+### Move commands
 |Command | Status | Desc |
 |--------|--------|------|
 | `C-f` | OK | Move forward |
@@ -24,9 +27,10 @@ Use `Shift+Insert` to paste from clipboard.
 | `C-x C-n` | - | Set goal column |
 | `C-u C-x C-n` | - | Deactivate C-x C-n |
 | `M-g g` | OK | Jump to line (command palette) |
+| `C-l` | OK | Center screen on current line |
 
 
-### Search Command
+### Search Commands
 |Command | Status | Desc |
 |--------|--------|------|
 | `C-s` | OK | Search forward |
@@ -34,7 +38,7 @@ Use `Shift+Insert` to paste from clipboard.
 | `C-M-n` | OK | Add selection to next find match |
 | `C-l` | - | Use `ext install keyboard-scroll` to activate |
 
-### Edit command
+### Edit commands
 |Command | Status | Desc |
 |--------|--------|------|
 | `C-d` | OK | Delete right (DEL) |
@@ -56,7 +60,7 @@ Use `Shift+Insert` to paste from clipboard.
 | `C-x C-l` | OK | Convert to lower case |
 | `C-x C-u` | OK | Convert to upper case |
 
-### Other Command
+### Other Commands
 |Command | Status | Desc |
 |--------|--------|------|
 | `C-g` | OK | Cancel |
@@ -69,10 +73,10 @@ Use `Shift+Insert` to paste from clipboard.
 | `M-num command` | - | Repeat command `num` times |
 | `C-M-SPC` | OK | Toggle SideBar visibility |
 
-### File Command
+### File Commands
 |Command | Status | Desc |
 |--------|--------|------|
-| `C-x b` | OK | QuickOpen a buffer |
+| `C-x b` | OK | Switch to another open buffer |
 | `C-x C-f` | OK | QuickOpen a file |
 | `C-x C-s` | OK | Save |
 | `C-x C-w` | OK | Save as |
@@ -86,8 +90,8 @@ Use `Shift+Insert` to paste from clipboard.
 - `ctrl+g`: workbench.action.gotoLine => **Use `alt+g g` instead**;
 - `ctrl+b`: workbench.action.toggleSidebarVisibility => **Use `ctrl+alt+space` instead**;
 - `ctrl+space`: toggleSuggestionDetails, editor.action.triggerSuggest => **Use `ctrl+'` instead**;
-- `ctrl+x`: editor.action.clipboardCutAction => **Use `shift+delete` instead**;
-- `ctrl+v`: editor.action.clipboardPasteAction => **Use `shift+insert` instead**;
+- `ctrl+x`: editor.action.clipboardCutAction => **Use `ctrl+w` instead**;
+- `ctrl+v`: editor.action.clipboardPasteAction => **Use `ctrl+y` instead**;
 - `ctrl+k`: editor.debug.action.showDebugHover, editor.action.trimTrailingWhitespace, editor.action.showHover, editor.action.removeCommentLine, editor.action.addCommentLine, editor.action.openDeclarationToTheSide;
 - `ctrl+y`: redo;
 - `ctrl+m`: editor.action.toggleTabFocusMode;
