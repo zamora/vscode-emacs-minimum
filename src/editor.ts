@@ -270,14 +270,14 @@ export class Editor {
 
             case KeybindProgressMode.RModeS:
                 this.setStatusBarPermanentMessage("");
-                this.SaveTextToRegister(text);
+                this.saveTextToRegister(text);
                 this.keybindProgressMode = KeybindProgressMode.None;
                 fHandled = true;
                 break;
 
             case KeybindProgressMode.RModeI:
                 this.setStatusBarPermanentMessage("");
-                this.RestoreTextFromRegister(text);
+                this.restoreTextFromRegister(text);
                 this.keybindProgressMode = KeybindProgressMode.None;
                 fHandled = true;
                 break;
@@ -300,7 +300,7 @@ export class Editor {
         return;    
     }
 
-    SaveTextToRegister(registerName: string): void {
+    saveTextToRegister(registerName: string): void {
         if (null == registerName) {
             return;
         }
@@ -314,7 +314,7 @@ export class Editor {
         return;
     }
     
-    RestoreTextFromRegister(registerName: string): void {
+    restoreTextFromRegister(registerName: string): void {
         vscode.commands.executeCommand("emacs.exitMarkMode"); // emulate Emacs 
         let obj : RegisterContent = this.registersStorage[registerName];
         if (null == obj) {
