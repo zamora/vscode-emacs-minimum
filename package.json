@@ -151,23 +151,23 @@
       },{
         "key": "ctrl+d",
         "command": "deleteRight",
-        "when": "editorTextFocus"
+        "when": "editorTextFocus && !editorReadonly"
       },{
         "key": "ctrl+h",
         "command": "deleteLeft",
-        "when": "editorTextFocus"
+        "when": "editorTextFocus && !editorReadonly"
       },{
         "key": "alt+d",
         "command": "deleteWordRight",
-        "when": "editorTextFocus"
+        "when": "editorTextFocus && !editorReadonly"
       },{
         "key": "ctrl+k",
         "command": "emacs.C-k",
-        "when": "editorTextFocus"
+        "when": "editorTextFocus && !editorReadonly"
       },{
         "key": "ctrl+w",
         "command": "emacs.C-w",
-        "when": "editorTextFocus"
+        "when": "editorTextFocus && !editorReadonly"
       },{
         "key": "alt+w",
         "command": "emacs.M-w",
@@ -175,15 +175,15 @@
       },{
         "key": "ctrl+y",
         "command": "emacs.C-y",
-        "when": "editorTextFocus"
+        "when": "editorTextFocus && !editorReadonly"
       },{
         "key": "ctrl+j",
         "command": "editor.action.insertLineAfter",
-        "when": "editorTextFocus"
+        "when": "editorTextFocus && !editorReadonly"
       },{
         "key": "ctrl+x ctrl+o",
         "command": "emacs.C-x_C-o",
-        "when": "editorTextFocus"
+        "when": "editorTextFocus && !editorReadonly"
       },{
         "key": "ctrl+x h",
         "command": "editor.action.selectAll",
@@ -191,19 +191,19 @@
       },{
         "key": "ctrl+x u",
         "command": "emacs.C-x_u",
-        "when": "editorTextFocus"
+        "when": "editorTextFocus && !editorReadonly"
       },{
         "key": "ctrl+/",
         "command": "emacs.C-/",
-        "when": "editorTextFocus"
+        "when": "editorTextFocus && !editorReadonly"
       },{
         "key": "ctrl+;",
         "command": "editor.action.commentLine",
-        "when": "editorTextFocus"
+        "when": "editorTextFocus && !editorReadonly"
       },{
         "key": "alt+;",
         "command": "editor.action.blockComment",
-        "when": "editorTextFocus"
+        "when": "editorTextFocus && !editorReadonly"
       },{
         "key": "ctrl+g",
         "command": "emacs.C-g",
