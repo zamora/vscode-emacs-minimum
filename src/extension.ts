@@ -11,6 +11,9 @@ export function activate(context: vscode.ExtensionContext): void {
             "C-k", "C-w", "M-w", "C-y", "C-x_C-o",
             "C-x_u", "C-/", "C-S_bs",
 
+            // Navigation
+            "C-l",
+
             // R-Mode
             "C-x_r"
         ],

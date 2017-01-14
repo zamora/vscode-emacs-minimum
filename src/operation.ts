@@ -39,6 +39,9 @@ export class Operation {
             "C-x_r": () => {
                 this.editor.setRMode();
             },
+            'C-l': () => {
+                this.editor.scrollLineToCenter()
+            }
         };
     }
 

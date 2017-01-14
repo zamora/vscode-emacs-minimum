@@ -266,6 +266,12 @@ export class Editor {
     deleteLine() : void {
         vscode.commands.executeCommand("emacs.exitMarkMode"); // emulate Emacs
         vscode.commands.executeCommand("editor.action.deleteLines");
-        return;
     }   
+
+    scrollLineToCenter() {
+        const editor = vscode.window.activeTextEditor
+        const selection = editor.selection
+        const range = new vscode.Range(selection.start, selection.end)
+        editor.revealRange(range, vscode.TextEditorRevealType.InCenter)
+    }
 }

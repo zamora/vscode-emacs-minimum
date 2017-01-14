@@ -230,6 +230,11 @@
         "when": "editorTextFocus && !editorReadonly"
       },
       {
+        "key": "ctrl+l",
+        "command": "emacs.C-l",
+        "when": "editorTextFocus"
+      },
+      {
         "key": "ctrl+g",
         "command": "emacs.C-g",
         "when": "editorTextFocus"
