@@ -4,6 +4,12 @@ This is a personal fork merging some of the oustanding pull requests that the or
 
 The clipboard handling is also simplified, by the removal of the emacs-only kill ring (which was also an unfinished implementation at the time). Copy, Cut, Yank and C-K work with the system clipboard now.
 
+To install:
+```
+$ npm install -g vsce
+$ vsce package
+$ code --install-extension vscode-emacs-0.1.1.vsix
+```
 
 # vscode-emacs
 
