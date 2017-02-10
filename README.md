@@ -7,8 +7,10 @@ The clipboard handling is also simplified, by the removal of the emacs-only kill
 To install:
 ```
 $ npm install -g vsce
+$ npm install
 $ vsce package
 $ code --install-extension vscode-emacs-0.1.1.vsix
+  # If binary is not in path on osx, might be at /Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code
 ```
 
 # vscode-emacs
