@@ -1,15 +1,15 @@
 {
-  "name": "vscode-emacs",
-  "displayName": "Emacs Keymap",
-  "description": "emacs like extension for vscode",
-  "version": "0.1.1",
-  "publisher": "hiro-sun",
-  "homepage": "https://github.com/hiro-sun/vscode-emacs",
+  "name": "vscode-emacs-friendly",
+  "displayName": "Emacs-Like Keybindings",
+  "description": "Basic Emacs keybindings and selection, friendly interaction with the system clipboard.",
+  "version": "0.2.0",
+  "publisher": "Sebastian Zaha",
+  "homepage": "https://github.com/SebastianZaha/vscode-emacs-friendly",
   "repository": {
     "type": "git",
-    "url": "https://github.com/hiro-sun/vscode-emacs.git"
+    "url": "https://github.com/SebastianZaha/vscode-emacs-friendly"
   },
-  "bugs": "https://github.com/hiro-sun/vscode-emacs/issues",
+  "bugs": "https://github.com/SebastianZaha/vscode-emacs-friendly/issues",
   "engines": {
     "vscode": "^1.5.0"
   },
