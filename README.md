@@ -1,21 +1,17 @@
-# Fork information
+# vscode-emacs-friendly
 
-This is a personal fork merging some of the oustanding pull requests that the original lacked.
+This plugin provides emacs keybindings and workflow for Visual Studio Code and is a fork of the great vscode extension by [hiro-sun](https://github.com/hiro-sun/vscode-emacs).
 
-The clipboard handling is also simplified, by the removal of the emacs-only kill ring (which was also an unfinished implementation at the time). Copy, Cut, Yank and C-K work with the system clipboard now.
+It merges some of the pull requests in the original and other external helpers that make the extension a little less an exact copy of emacs behavior, and a little more friendly in interacting with the system clipboard and normal vscode interactions.
 
-To install:
-```
-$ npm install -g vsce
-$ npm install
-$ vsce package
-$ code --install-extension vscode-emacs-0.1.1.vsix
-  # If binary is not in path on osx, might be at /Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code
-```
+The following are some of the changes and enhancements from the original:
 
-# vscode-emacs
+* The clipboard handling is simplified by the removal of the emacs-only kill ring (which was also an unfinished implementation in the original). Copy, Cut, Yank and C-K work with the system clipboard now.
+* C+x k to close tab, C+x C-k all tabs
+* C+l centers screen on the cursor line
+* C+x C+f bound to quick open file
+* yank overwrites selection
 
-This plugin provides emacs keybindings and workflow for Visual Studio Code.
 
 ### Move commands
 |Command | Status | Desc |
@@ -92,6 +88,8 @@ This plugin provides emacs keybindings and workflow for Visual Studio Code.
 | `C-x C-d` | - | Open Folder |
 | `C-x C-n` | - | Open new window |
 | `C-x C-b` | - | Create new file and open |
+| `C-x k` | OK | Close current tab (buffer) |
+| `C-x C-k` | OK | Close all tabs |
 
 ## Conflicts with default key bindings
 - `ctrl+d`: editor.action.addSelectionToNextFindMatch => **Use `ctrl+alt+n` instead**;
