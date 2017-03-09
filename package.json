@@ -2,8 +2,8 @@
   "name": "vscode-emacs-friendly",
   "displayName": "Emacs-Like Keybindings",
   "description": "Basic Emacs keybindings and selection, friendly interaction with the system clipboard.",
-  "version": "0.2.0",
-  "publisher": "Sebastian Zaha",
+  "version": "0.2.1",
+  "publisher": "lfs",
   "homepage": "https://github.com/SebastianZaha/vscode-emacs-friendly",
   "repository": {
     "type": "git",

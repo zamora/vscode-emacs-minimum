@@ -1,3 +1,11 @@
+## 0.2.1 (2017-03-09)
+- Forked and merged various pull requests and fixes
+- The clipboard handling is simplified by the removal of the emacs-only kill ring (which was also an unfinished implementation in the original). Copy, Cut, Yank and C-K work with the system clipboard now.
+- C+x k to close tab, C+x C-k all tabs
+- C+l centers screen on the cursor line
+- C+x C+f bound to quick open file
+- yank overwrites selection
+
 ## 0.1.1 (2016-11-04)
 - Fix #24: C-g does not cancel suggestions and prompts
 - Update vscode engine
