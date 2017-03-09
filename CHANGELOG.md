@@ -1,4 +1,7 @@
-## 0.2.1 (2017-03-09)
+## 0.3.0 (2017-03-09)
+- Repackaged and republished for ease of access on vscode marketplace.
+
+## 0.2.0 (2017-01-14)
 - Forked and merged various pull requests and fixes
 - The clipboard handling is simplified by the removal of the emacs-only kill ring (which was also an unfinished implementation in the original). Copy, Cut, Yank and C-K work with the system clipboard now.
 - C+x k to close tab, C+x C-k all tabs
