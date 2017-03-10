@@ -104,3 +104,7 @@ The following are some of the changes and enhancements from the original:
 - `ctrl+/`: editor.action.commentLine => **Use `ctrl+;` instead**;
 - `ctrl+p` & `ctrl+e`: workbench.action.quickOpen => **Use `ctrl+x b` instead**;
 - `ctrl+p`: workbench.action.quickOpenNavigateNext => **Use `ctrl+n` instead**.
+
+# More information
+
+The logo is from the great [Pacifica Icon Set](http://bokehlicia.deviantart.com/art/Pacifica-Icons-402508559).

@@ -1,3 +1,6 @@
+## 0.3.2 (2017-03-10)
+- Added icon
+
 ## 0.3.0 (2017-03-09)
 - Repackaged and republished for ease of access on vscode marketplace.
 

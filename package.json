@@ -2,7 +2,8 @@
     "name": "vscode-emacs-friendly",
     "displayName": "Emacs Friendly Keymap",
     "description": "Emacs keybindings and selection, friendly interaction with the system clipboard.",
-    "version": "0.3.1",
+    "icon": "emacs_pacifica.png",
+    "version": "0.3.3",
     "publisher": "lfs",
     "homepage": "https://github.com/SebastianZaha/vscode-emacs-friendly",
     "repository": {
