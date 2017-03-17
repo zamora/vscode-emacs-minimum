@@ -1,3 +1,6 @@
+## 0.4.0 (2017-03-16)
+- Using clipboardy for system clipboard access, old dependency does not work on linux.
+
 ## 0.3.2 (2017-03-10)
 - Added icon
 
