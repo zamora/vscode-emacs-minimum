@@ -1,3 +1,6 @@
+## 0.5.0 (2017-03-25)
+- Added bindings to manipulate window splitting and joining
+
 ## 0.4.0 (2017-03-16)
 - Using clipboardy for system clipboard access, old dependency does not work on linux.
 

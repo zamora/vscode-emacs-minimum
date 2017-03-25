@@ -40,7 +40,6 @@ The following are some of the changes and enhancements from the original:
 | `C-s` | OK | Search forward |
 | `C-r` | OK | Search backward |
 | `C-M-n` | OK | Add selection to next find match |
-| `C-l` | - | Use `ext install keyboard-scroll` to activate |
 
 ### Edit commands
 |Command | Status | Desc |
@@ -80,16 +79,22 @@ The following are some of the changes and enhancements from the original:
 ### File Commands
 |Command | Status | Desc |
 |--------|--------|------|
-| `C-x b` | OK | Switch to another open buffer |
-| `C-x C-f` | OK | QuickOpen a file |
 | `C-x C-s` | OK | Save |
 | `C-x C-w` | OK | Save as |
-| `C-x i` | - | Insert buffer from file |
-| `C-x C-d` | - | Open Folder |
-| `C-x C-n` | - | Open new window |
+| `C-x C-n` | OK | Open new window |
 | `C-x C-b` | - | Create new file and open |
+
+### Tab / Buffer Manipulation Commands
+|Command | Status | Desc |
+|--------|--------|------|
+| `C-x b` | OK | Switch to another open buffer |
+| `C-x C-f` | OK | QuickOpen a file |
 | `C-x k` | OK | Close current tab (buffer) |
 | `C-x C-k` | OK | Close all tabs |
+| `C-x 1` | OK | Close editors in other (split) group.  |
+| `C-x 2` | OK | Split editor |
+| `C-x 3` | OK | Toggle split layout (vertical to horizontal) |
+| `C-x o` | OK | Focus other split editor |
 
 ## Conflicts with default key bindings
 - `ctrl+d`: editor.action.addSelectionToNextFindMatch => **Use `ctrl+alt+n` instead**;

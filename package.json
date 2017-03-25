@@ -3,7 +3,7 @@
     "displayName": "Emacs Friendly Keymap",
     "description": "Emacs keybindings and selection, friendly interaction with the system clipboard.",
     "icon": "emacs_pacifica.png",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "publisher": "lfs",
     "homepage": "https://github.com/SebastianZaha/vscode-emacs-friendly",
     "repository": {
@@ -346,6 +346,26 @@
                 "key": "ctrl+x k",
                 "command": "workbench.action.closeWindow",
                 "when": "!editorIsOpen"
+            },
+            {
+                "key": "ctrl+x ctrl+n",
+                "command": "workbench.action.newWindow"
+            },
+            {
+                "key": "ctrl+x 1",
+                "command": "workbench.action.closeEditorsInOtherGroups"
+            },
+            {
+                "key": "ctrl+x 2",
+                "command": "workbench.action.splitEditor"
+            },
+            {
+                "key": "ctrl+x 3",
+                "command": "workbench.action.toggleEditorGroupLayout"
+            },
+            {
+                "key": "ctrl+x o",
+                "command": "workbench.action.navigateEditorGroups"
             },
             {
                 "key": "ctrl+p",
