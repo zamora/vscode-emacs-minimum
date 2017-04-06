@@ -3,7 +3,7 @@
     "displayName": "Emacs Friendly Keymap",
     "description": "Emacs keybindings and selection, friendly interaction with the system clipboard.",
     "icon": "emacs_pacifica.png",
-    "version": "0.5.0",
+    "version": "0.5.1",
     "publisher": "lfs",
     "homepage": "https://github.com/SebastianZaha/vscode-emacs-friendly",
     "repository": {
