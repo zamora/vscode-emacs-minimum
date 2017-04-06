@@ -1,3 +1,6 @@
+## 0.5.1 (?)
+- Continuous kills from the same cursor position will augment clipboard
+
 ## 0.5.0 (2017-03-25)
 - Added bindings to manipulate window splitting and joining
 

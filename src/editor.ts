@@ -14,10 +14,16 @@ enum KeybindProgressMode {
 export class Editor {
 	private keybindProgressMode: KeybindProgressMode;
 	private registersStorage: { [key:string] : RegisterContent; };
+	private lastKill: vscode.Position // if kill position stays the same, append to clipboard
+	private lastNewline: string // clipboard will strip off trailing newlines so we need to force append it
 
 	constructor() {
 		this.keybindProgressMode = KeybindProgressMode.None;
 		this.registersStorage = {};
+		let editor = this;
+		vscode.window.onDidChangeActiveTextEditor(function(event) { 
+			editor.lastKill = null;
+		});
 	}
 
 	setStatusBarMessage(text: string): vscode.Disposable {
@@ -54,8 +60,22 @@ export class Editor {
 	// Kill to end of line
 	async kill() {
 		await vscode.commands.executeCommand("emacs.exitMarkMode")
-		await vscode.commands.executeCommand("cursorEndSelect")
-		this.cut()
+		let selection = this.getSelectionRange();
+		let killPosition = vscode.window.activeTextEditor.selection.active;
+		let saveNewline = '';
+		if (selection == null) {
+			await vscode.commands.executeCommand("cursorEndSelect"); // select to end of line only if nothing selected
+			selection = this.getSelectionRange();
+			if (selection == null) { // if at end of line, kill line ending
+				await vscode.commands.executeCommand("cursorMove", {to: "right", by: "character", select: true});
+				saveNewline = this.getSelectionText();
+			}
+		} else {
+			killPosition = selection.start;
+		}
+		this.cut(this.lastKill != null && killPosition.isEqual(this.lastKill));
+		this.lastKill = killPosition;
+		this.lastNewline = saveNewline;
 	}
 
 	copy(): void {
@@ -63,10 +83,14 @@ export class Editor {
 		vscode.commands.executeCommand("emacs.exitMarkMode")
 	}
 
-	cut(): void {
-		clip.writeSync(this.getSelectionText())
-		Editor.delete(this.getSelectionRange())
-		vscode.commands.executeCommand("emacs.exitMarkMode")
+	cut(appendClipboard?:boolean): void {
+		if (appendClipboard) {
+			clip.writeSync(clip.readSync() + this.lastNewline + this.getSelectionText());
+		} else {
+			clip.writeSync(this.getSelectionText());
+		}
+		Editor.delete(this.getSelectionRange());
+		vscode.commands.executeCommand("emacs.exitMarkMode");
 	}
 
 	yank(): void {
