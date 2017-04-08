@@ -95,12 +95,11 @@ export class Editor {
 		}
 	}
 
-	deleteBlankLines(): void {
+	async deleteBlankLines() {
 		let selection = this.getSelection(),
 			anchor = selection.anchor,
 			doc = vscode.window.activeTextEditor.document,
 			range = doc.lineAt(selection.start.line).range,
-			promises = [],
 			nextLine: vscode.Position;
 
 		if (range.isEmpty) {
@@ -112,14 +111,14 @@ export class Editor {
 		}
 		selection = new vscode.Selection(nextLine, nextLine);
 		vscode.window.activeTextEditor.selection = selection;
+		
 		for (let line = selection.start.line;
-			 line < doc.lineCount - 1  && doc.lineAt(line).range.isEmpty;
-			 ++line) {
-			promises.push(vscode.commands.executeCommand("deleteRight"));
+				line < doc.lineCount - 1  && doc.lineAt(line).range.isEmpty;
+		    	++line) {
+			
+			await vscode.commands.executeCommand("deleteRight")
 		}
-		Promise.all(promises).then(() => {
-			vscode.window.activeTextEditor.selection = new vscode.Selection(anchor, anchor);
-		});
+		vscode.window.activeTextEditor.selection = new vscode.Selection(anchor, anchor)
 	}
 
 	static delete(range: vscode.Range = null): void {
@@ -231,7 +230,7 @@ export class Editor {
 	}
 
 	saveTextToRegister(registerName: string): void {
-		if (null == registerName) {
+		if (null === registerName) {
 			return;
 		}
 		let range : vscode.Range = this.getSelectionRange();
@@ -243,11 +242,11 @@ export class Editor {
 		}
 		return;
 	}
-	
+
 	restoreTextFromRegister(registerName: string): void {
 		vscode.commands.executeCommand("emacs.exitMarkMode"); // emulate Emacs 
 		let obj : RegisterContent = this.registersStorage[registerName];
-		if (null == obj) {
+		if (null === obj) {
 			this.setStatusBarMessage("Register does not contain text.");
 			return;
 		}
