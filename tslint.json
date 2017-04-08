@@ -6,6 +6,6 @@
 		"curly": false,
 		"class-name": true,
 		"semicolon": ["never"],
-		"triple-equals": true
+		"triple-equals": false
 	}
 }
