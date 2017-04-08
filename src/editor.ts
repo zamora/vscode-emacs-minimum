@@ -16,13 +16,21 @@ export class Editor {
 	private registersStorage: { [key:string] : RegisterContent; };
 	private lastKill: vscode.Position // if kill position stays the same, append to clipboard
 	private lastNewline: string // clipboard will strip off trailing newlines so we need to force append it
+	private justDidKill: boolean
 
 	constructor() {
 		this.keybindProgressMode = KeybindProgressMode.None;
 		this.registersStorage = {};
+		this.justDidKill = false;
 		let editor = this;
 		vscode.window.onDidChangeActiveTextEditor(function(event) { 
 			editor.lastKill = null;
+		});
+		vscode.workspace.onDidChangeTextDocument(function(event) {
+			if (!editor.justDidKill) {
+				editor.lastKill = null;
+			}
+			editor.justDidKill = false;
 		});
 	}
 
@@ -69,13 +77,17 @@ export class Editor {
 			if (selection == null) { // if at end of line, kill line ending
 				await vscode.commands.executeCommand("cursorMove", {to: "right", by: "character", select: true});
 				saveNewline = this.getSelectionText();
+				selection = this.getSelectionRange();
 			}
 		} else {
 			killPosition = selection.start;
 		}
-		this.cut(this.lastKill != null && killPosition.isEqual(this.lastKill));
-		this.lastKill = killPosition;
-		this.lastNewline = saveNewline;
+		if (selection != null) {
+			this.justDidKill = true;
+			this.cut(this.lastKill != null && killPosition.isEqual(this.lastKill));
+			this.lastKill = killPosition;
+			this.lastNewline = saveNewline;
+		}
 	}
 
 	copy(): void {
