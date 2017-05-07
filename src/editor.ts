@@ -66,7 +66,7 @@ export class Editor {
 	}
 
 	// Kill to end of line
-	async kill() {
+	async kill(): Promise<boolean> {
 		await vscode.commands.executeCommand("emacs.exitMarkMode")
 		let selection = this.getSelectionRange();
 		let killPosition = vscode.window.activeTextEditor.selection.active;
@@ -84,9 +84,13 @@ export class Editor {
 		}
 		if (selection != null) {
 			this.justDidKill = true;
-			this.cut(this.lastKill != null && killPosition.isEqual(this.lastKill));
+			let p = this.cut(this.lastKill != null && killPosition.isEqual(this.lastKill));
 			this.lastKill = killPosition;
 			this.lastNewline = saveNewline;
+
+			return p
+		} else {
+			return null
 		}
 	}
 
@@ -95,19 +99,21 @@ export class Editor {
 		vscode.commands.executeCommand("emacs.exitMarkMode")
 	}
 
-	cut(appendClipboard?:boolean): void {
+	cut(appendClipboard?:boolean): Thenable<boolean> {
 		if (appendClipboard) {
 			clip.writeSync(clip.readSync() + this.lastNewline + this.getSelectionText());
 		} else {
 			clip.writeSync(this.getSelectionText());
 		}
-		Editor.delete(this.getSelectionRange());
+		let t = Editor.delete(this.getSelectionRange());
 		vscode.commands.executeCommand("emacs.exitMarkMode");
+		return t
 	}
 
-	yank(): void {
-		vscode.commands.executeCommand("editor.action.clipboardPasteAction"),
-		vscode.commands.executeCommand("emacs.exitMarkMode")
+	yank(): Thenable<{}> {
+		return Promise.all([
+			vscode.commands.executeCommand("editor.action.clipboardPasteAction"),
+			vscode.commands.executeCommand("emacs.exitMarkMode")])
 	}
 
 	undo(): void {
@@ -157,9 +163,9 @@ export class Editor {
 		vscode.window.activeTextEditor.selection = new vscode.Selection(anchor, anchor)
 	}
 
-	static delete(range: vscode.Range = null): void {
+	static delete(range: vscode.Range = null): Thenable<boolean> {
 		if (range) {
-			vscode.window.activeTextEditor.edit(editBuilder => {
+			return vscode.window.activeTextEditor.edit(editBuilder => {
 				editBuilder.delete(range);
 			});
 		}
