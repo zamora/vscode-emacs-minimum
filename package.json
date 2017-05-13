@@ -470,6 +470,6 @@
         "@types/node": "^6.0.40"
     },
     "dependencies": {
-        "clipboardy": "^1.0.1"
+        "clipboardy": "^1.1.1"
     }
 }
