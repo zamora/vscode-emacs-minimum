@@ -14,10 +14,24 @@ enum KeybindProgressMode {
 export class Editor {
 	private keybindProgressMode: KeybindProgressMode;
 	private registersStorage: { [key:string] : RegisterContent; };
+	private lastKill: vscode.Position // if kill position stays the same, append to clipboard
+	private justDidKill: boolean
 
 	constructor() {
-		this.keybindProgressMode = KeybindProgressMode.None;
-		this.registersStorage = {};
+		this.keybindProgressMode = KeybindProgressMode.None
+		this.registersStorage = {}
+		this.justDidKill = false
+		this.lastKill = null
+
+		vscode.window.onDidChangeActiveTextEditor(event => {
+			this.lastKill = null
+		})
+		vscode.workspace.onDidChangeTextDocument(event => {
+			if (!this.justDidKill) {
+				this.lastKill = null
+			}
+			this.justDidKill = false
+		})
 	}
 
 	setStatusBarMessage(text: string): vscode.Disposable {
@@ -42,20 +56,49 @@ export class Editor {
 
 	getSelectionText(): string {
 		let r = this.getSelectionRange()
-		return vscode.window.activeTextEditor.document.getText(r)
+		return r ? vscode.window.activeTextEditor.document.getText(r) : ''
 	}
 
 	setSelection(start: vscode.Position, end: vscode.Position): void {
 		let editor = vscode.window.activeTextEditor;
-
 		editor.selection = new vscode.Selection(start, end);
 	}
 
+	getCurrentPos(): vscode.Position {
+		return vscode.window.activeTextEditor.selection.active
+	}
+
 	// Kill to end of line
-	async kill() {
+	async kill(): Promise<boolean> {
+		// Ignore whatever we have selected before
 		await vscode.commands.executeCommand("emacs.exitMarkMode")
-		await vscode.commands.executeCommand("cursorEndSelect")
-		this.cut()
+
+		let startPos = this.getCurrentPos()
+
+		// Move down an entire line (not just the wrapped part), and to the beginning.
+		await vscode.commands.executeCommand("cursorMove", {to: "down", by: "line", select: false})
+		await vscode.commands.executeCommand("cursorMove", {to: "wrappedLineStart"})
+
+		let endPos = this.getCurrentPos(),
+			range = new vscode.Range(startPos, endPos),
+			txt = vscode.window.activeTextEditor.document.getText(range)
+
+		// If there is something other than whitespace in the selection, we do not cut the EOL too
+		if (!txt.match(/^\s*$/)) {
+			await vscode.commands.executeCommand("cursorMove", {to: "left", by: "character"})
+			endPos = this.getCurrentPos()
+		}
+
+		// Select it now, cut the selection, remember the position in case of multiple cuts from same spot
+		this.setSelection(startPos, endPos)
+		let promise = this.cut(this.lastKill != null && startPos.isEqual(this.lastKill))
+
+		promise.then(() => {
+			this.justDidKill = true
+			this.lastKill = startPos
+		})
+
+		return promise
 	}
 
 	copy(): void {
@@ -63,15 +106,22 @@ export class Editor {
 		vscode.commands.executeCommand("emacs.exitMarkMode")
 	}
 
-	cut(): void {
-		clip.writeSync(this.getSelectionText())
-		Editor.delete(this.getSelectionRange())
-		vscode.commands.executeCommand("emacs.exitMarkMode")
+	cut(appendClipboard?: boolean): Thenable<boolean> {
+		if (appendClipboard) {
+			clip.writeSync(clip.readSync() + this.getSelectionText());
+		} else {
+			clip.writeSync(this.getSelectionText());
+		}
+		let t = Editor.delete(this.getSelectionRange());
+		vscode.commands.executeCommand("emacs.exitMarkMode");
+		return t
 	}
 
-	yank(): void {
-		vscode.commands.executeCommand("editor.action.clipboardPasteAction"),
-		vscode.commands.executeCommand("emacs.exitMarkMode")
+	yank(): Thenable<{}> {
+		this.justDidKill = false
+		return Promise.all([
+			vscode.commands.executeCommand("editor.action.clipboardPasteAction"),
+			vscode.commands.executeCommand("emacs.exitMarkMode")])
 	}
 
 	undo(): void {
@@ -121,9 +171,9 @@ export class Editor {
 		vscode.window.activeTextEditor.selection = new vscode.Selection(anchor, anchor)
 	}
 
-	static delete(range: vscode.Range = null): void {
+	static delete(range: vscode.Range = null): Thenable<boolean> {
 		if (range) {
-			vscode.window.activeTextEditor.edit(editBuilder => {
+			return vscode.window.activeTextEditor.edit(editBuilder => {
 				editBuilder.delete(range);
 			});
 		}
