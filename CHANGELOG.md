@@ -1,5 +1,8 @@
-## 0.5.1 (?)
+## 0.6.0 (2017-06-26)
 - Continuous kills from the same cursor position will augment clipboard
+- Killing removes end of line character when only whitespace is left on line
+- Bind toggle zen mode to C-x z, the default was conflicting
+- Close search widget on many cursor moves & other editor actions
 
 ## 0.5.0 (2017-03-25)
 - Added bindings to manipulate window splitting and joining

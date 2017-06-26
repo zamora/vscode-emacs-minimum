@@ -376,6 +376,10 @@
                 "when": "editorFocus && findWidgetVisible"
             },
             {
+                "key": "ctrl+x z",
+                "command": "workbench.action.toggleZenMode"
+            },
+            {
                 "key": "ctrl+/",
                 "command": "emacs.C-/",
                 "when": "editorTextFocus && !editorReadonly"

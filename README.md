@@ -75,6 +75,7 @@ The following are some of the changes and enhancements from the original:
 | `M-/(dabbrev)` | - | Auto-completion |
 | `M-num command` | - | Repeat command `num` times |
 | `C-M-SPC` | OK | Toggle SideBar visibility |
+| `C-x z` | | Toggle Zen Mode |
 
 ### File Commands
 |Command | Status | Desc |
@@ -104,6 +105,7 @@ The following are some of the changes and enhancements from the original:
 - `ctrl+x`: editor.action.clipboardCutAction => **Use `ctrl+w` instead**;
 - `ctrl+v`: editor.action.clipboardPasteAction => **Use `ctrl+y` instead**;
 - `ctrl+k`: editor.debug.action.showDebugHover, editor.action.trimTrailingWhitespace, editor.action.showHover, editor.action.removeCommentLine, editor.action.addCommentLine, editor.action.openDeclarationToTheSide;
+- `ctrl+k z`: workbench.action.toggleZenMode => **Use `ctrl+x z` instead**;
 - `ctrl+y`: redo;
 - `ctrl+m`: editor.action.toggleTabFocusMode;
 - `ctrl+/`: editor.action.commentLine => **Use `ctrl+;` instead**;
