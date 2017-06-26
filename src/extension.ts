@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import {Operation} from './operation';
 
 var inMarkMode: boolean = false;
+var markHasMoved: boolean = false;
 export function activate(context: vscode.ExtensionContext): void {
     let op = new Operation(),
         commandList: string[] = [
@@ -32,6 +33,9 @@ export function activate(context: vscode.ExtensionContext): void {
     cursorMoves.forEach(element => {
         context.subscriptions.push(vscode.commands.registerCommand(
             "emacs."+element, () => {
+                if (inMarkMode) {
+                    markHasMoved  = true;
+                }
                 vscode.commands.executeCommand(
                     inMarkMode ?
                     element+"Select" :
@@ -58,8 +62,13 @@ export function deactivate(): void {
 function initMarkMode(context: vscode.ExtensionContext): void {
     context.subscriptions.push(vscode.commands.registerCommand(
         'emacs.enterMarkMode', () => {
-            initSelection();
-            inMarkMode = true;
+            if (inMarkMode && !markHasMoved) {
+                inMarkMode = false;
+            } else {
+                initSelection();
+                inMarkMode = true;
+                markHasMoved = false;
+            }
         })
     );
 
