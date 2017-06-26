@@ -13,19 +13,28 @@ suite("C-K functionality", () => {
 
         let doc = await vscode.workspace.openTextDocument({content: c, language: 'text'})
         await vscode.window.showTextDocument(doc)
+
+        await e.kill()
+        await e.kill()
+        await e.kill()
+        assert.equal(doc.getText(), "\nline 3\n")
+        await e.yank()
+        assert.equal(doc.getText(), c)
+
+        await utils.moveCursorToBeginning()
         
         await e.kill()
-        assert.equal(e.getSelectionText(), "\nline 2\nline 3\n")
+        assert.equal(doc.getText(), "\nline 2\nline 3\n")
         await e.yank()
-        assert.equal(e.getSelectionText(), c)
+        assert.equal(doc.getText(), c)
         
         await utils.moveCursorToBeginning()
 
         await e.kill()
         await e.kill()
-        assert.equal(e.getSelectionText(), "line 2\nline 3\n")
+        assert.equal(doc.getText(), "line 2\nline 3\n")
         await e.yank()
-        assert.equal(e.getSelectionText(), c)
+        assert.equal(doc.getText(), c)
 
         await utils.moveCursorToBeginning()
 
@@ -33,8 +42,8 @@ suite("C-K functionality", () => {
         await e.kill()
         await e.kill()
         await e.kill()
-        assert.equal(e.getSelectionText(), "line 3\n")
+        assert.equal(doc.getText(), "line 3\n")
         await e.yank()
-        assert.equal(e.getSelectionText(), c)
+        assert.equal(doc.getText(), c)
     });
 });
