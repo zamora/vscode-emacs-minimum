@@ -1,3 +1,6 @@
+## 0.6.1 (2017-06-27)
+- Fix cut to end of line operation when on the last line of a file
+
 ## 0.6.0 (2017-06-26)
 - Continuous kills from the same cursor position will augment clipboard
 - Killing removes end of line character when only whitespace is left on line
