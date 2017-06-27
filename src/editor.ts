@@ -34,6 +34,10 @@ export class Editor {
 		})
 	}
 
+	static isOnLastLine(): boolean {
+		return vscode.window.activeTextEditor.selection.active.line == vscode.window.activeTextEditor.document.lineCount - 1
+	}
+
 	setStatusBarMessage(text: string): vscode.Disposable {
 		return vscode.window.setStatusBarMessage(text, 1000);
 	}
@@ -73,18 +77,21 @@ export class Editor {
 		// Ignore whatever we have selected before
 		await vscode.commands.executeCommand("emacs.exitMarkMode")
 
-		let startPos = this.getCurrentPos()
+		let startPos = this.getCurrentPos(),
+			isOnLastLine = Editor.isOnLastLine()
 
 		// Move down an entire line (not just the wrapped part), and to the beginning.
-		await vscode.commands.executeCommand("cursorMove", {to: "down", by: "line", select: false})
-		await vscode.commands.executeCommand("cursorMove", {to: "wrappedLineStart"})
+		await vscode.commands.executeCommand("cursorMove", { to: "down", by: "line", select: false })		
+		if (!isOnLastLine) {
+			await vscode.commands.executeCommand("cursorMove", { to: "wrappedLineStart" })
+		}
 
 		let endPos = this.getCurrentPos(),
 			range = new vscode.Range(startPos, endPos),
 			txt = vscode.window.activeTextEditor.document.getText(range)
 
 		// If there is something other than whitespace in the selection, we do not cut the EOL too
-		if (!txt.match(/^\s*$/)) {
+		if (!isOnLastLine && !txt.match(/^\s*$/)) {
 			await vscode.commands.executeCommand("cursorMove", {to: "left", by: "character"})
 			endPos = this.getCurrentPos()
 		}
