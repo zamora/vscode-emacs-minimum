@@ -47,13 +47,14 @@ The following are some of the changes and enhancements from the original:
 | `C-d` | OK | Delete right (DEL) |
 | `C-h` | OK | Delete left (BACKSPACE) |
 | `M-d` | OK | Delete word |
+| `M-Bksp` | OK | Delete word left |
 | `C-k` | OK | Kill to line end |
 | `C-S-Bksp` | OK | Kill entire line |
 | `C-w` | OK | Kill region |
 | `M-w` | OK | Copy region to kill ring |
 | `C-y` | OK | Yank |
-| `C-j` | OK | Line Feed |
-| `C-m` | - | Carriage Return |
+| `C-j` | OK | Enter |
+| `C-m` | OK | Enter |
 | `C-i` | - | Horizontal Tab |
 | `C-x C-o` | OK | Delete blank lines around |
 | `C-x h` | OK | Select All |

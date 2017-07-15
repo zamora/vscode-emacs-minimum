@@ -1,3 +1,9 @@
+## 0.7.0 (2017-07-15)
+- Change C-j to behave as similar as possible as ENTER
+- Add C-m as a C-j alias (in early emacs versions C-m breaks the line, not C-j)
+- Add missing M-backspace shortcut to delete left word
+- Fix C-p and C-e shortcuts to work on the integrated terminal, instead of opening the command palette
+
 ## 0.6.1 (2017-06-27)
 - Fix cut to end of line operation when on the last line of a file
 
