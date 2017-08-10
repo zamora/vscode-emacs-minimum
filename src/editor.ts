@@ -11,17 +11,26 @@ enum KeybindProgressMode {
 	MacroRecordingMode  // (FUTURE, TBD) Emacs macro recording [started by 'Ctrl-x+('] is currently in progress
 };
 
+// Possible positions when C-l is invoked consequtively
+enum RecenterPosition {
+  Middle,
+  Top,
+  Bottom
+};
+
 export class Editor {
 	private keybindProgressMode: KeybindProgressMode;
 	private registersStorage: { [key:string] : RegisterContent; };
 	private lastKill: vscode.Position // if kill position stays the same, append to clipboard
 	private justDidKill: boolean
+	private centerState: RecenterPosition
 
 	constructor() {
 		this.keybindProgressMode = KeybindProgressMode.None
 		this.registersStorage = {}
 		this.justDidKill = false
 		this.lastKill = null
+		this.centerState = RecenterPosition.Middle
 
 		vscode.window.onDidChangeActiveTextEditor(event => {
 			this.lastKill = null
@@ -31,6 +40,9 @@ export class Editor {
 				this.lastKill = null
 			}
 			this.justDidKill = false
+		})
+		vscode.window.onDidChangeTextEditorSelection(event => {
+			this.centerState = RecenterPosition.Middle
 		})
 	}
 
@@ -323,11 +335,26 @@ export class Editor {
 		vscode.commands.executeCommand("editor.action.deleteLines");
 	}
 
-	scrollLineToCenter() {
+	scrollLineToCenterTopBottom = () => {
 		const editor = vscode.window.activeTextEditor
 		const selection = editor.selection
-		const range = new vscode.Range(selection.start, selection.end)
-		editor.revealRange(range, vscode.TextEditorRevealType.InCenter)
+
+		switch (this.centerState) {
+			case RecenterPosition.Middle:
+				this.centerState = RecenterPosition.Top;
+				editor.revealRange(selection, vscode.TextEditorRevealType.InCenter);
+				break;
+			case RecenterPosition.Top:
+				this.centerState = RecenterPosition.Bottom;
+				editor.revealRange(selection, vscode.TextEditorRevealType.AtTop);
+				break;
+			case RecenterPosition.Bottom:
+				this.centerState = RecenterPosition.Middle;
+				// There is no AtBottom, so instead scroll a page up (without moving cursor).
+				// The current line then ends up as the last line of the window (more or less)
+				vscode.commands.executeCommand("scrollPageUp");
+				break;
+		}
 	}
 
 	breakLine() {

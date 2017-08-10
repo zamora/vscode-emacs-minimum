@@ -43,7 +43,7 @@ export class Operation {
                 this.editor.setRMode();
             },
             'C-l': () => {
-                this.editor.scrollLineToCenter()
+                this.editor.scrollLineToCenterTopBottom()
             }
         };
     }
