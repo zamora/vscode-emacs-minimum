@@ -39,9 +39,6 @@ export class Operation {
             "C-S_bs": () => {
                 this.editor.deleteLine();
             },
-            "C-x_r": () => {
-                this.editor.setRMode();
-            },
             'C-l': () => {
                 this.editor.scrollLineToCenterTopBottom()
             }
@@ -50,9 +47,5 @@ export class Operation {
 
     getCommand(commandName: string): (...args: any[]) => any {
         return this.commandList[commandName];
-    }
-
-    onType(text: string): void {
-        this.editor.onType(text);
     }
 }

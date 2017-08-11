@@ -1,15 +1,5 @@
 import * as vscode from 'vscode';
 import * as clip from 'clipboardy'
-import {RegisterContent, RectangleContent, RegisterKind} from './registers';
-
-enum KeybindProgressMode {
-	None,   // No current keybind is currently in progress
-	RMode,  // Rectangle and/or Register keybinding  [started by 'C-x+r'] is currently in progress
-	RModeS, // 'Save Region in register' keybinding [started by 'C-x+r+s'] is currently in progress
-	RModeI, // 'Insert Register content into buffer' keybinding [started by 'C-x+r+i'] is currently in progress
-	AMode,  // (FUTURE, TBD) Abbrev keybinding  [started by 'C-x+a'] is currently in progress
-	MacroRecordingMode  // (FUTURE, TBD) Emacs macro recording [started by 'Ctrl-x+('] is currently in progress
-};
 
 // Possible positions when C-l is invoked consequtively
 enum RecenterPosition {
@@ -19,15 +9,11 @@ enum RecenterPosition {
 };
 
 export class Editor {
-	private keybindProgressMode: KeybindProgressMode;
-	private registersStorage: { [key:string] : RegisterContent; };
 	private lastKill: vscode.Position // if kill position stays the same, append to clipboard
 	private justDidKill: boolean
 	private centerState: RecenterPosition
 
 	constructor() {
-		this.keybindProgressMode = KeybindProgressMode.None
-		this.registersStorage = {}
 		this.justDidKill = false
 		this.lastKill = null
 		this.centerState = RecenterPosition.Middle
@@ -196,138 +182,6 @@ export class Editor {
 				editBuilder.delete(range);
 			});
 		}
-	}
-
-	setRMode(): void {
-		this.setStatusBarPermanentMessage("C-x r");
-		this.keybindProgressMode = KeybindProgressMode.RMode;
-		return;
-	}
-
-	onType(text: string): void {
-		let fHandled = false;
-		switch(this.keybindProgressMode)
-		{
-			case KeybindProgressMode.RMode:
-				switch (text)
-				{
-					// Rectangles
-					case 'r':
-						this.setStatusBarMessage("'C-x r r' (Copy rectangle to register) is not supported.");
-						this.keybindProgressMode = KeybindProgressMode.None;
-						fHandled = true;
-						break;
-
-					case 'k':
-						this.setStatusBarMessage("'C-x r k' (Kill rectangle) is not supported.");
-						this.keybindProgressMode = KeybindProgressMode.None;
-						fHandled = true;
-						break;
-
-					case 'y':
-						this.setStatusBarMessage("'C-x r y' (Yank rectangle) is not supported.");
-						this.keybindProgressMode = KeybindProgressMode.None;
-						fHandled = true;
-						break;
-
-					case 'o':
-						this.setStatusBarMessage("'C-x r o' (Open rectangle) is not supported.");
-						this.keybindProgressMode = KeybindProgressMode.None;
-						fHandled = true;
-						break;
-
-					case 'c':
-						this.setStatusBarMessage("'C-x r c' (Blank out rectangle) is not supported.");
-						this.keybindProgressMode = KeybindProgressMode.None;
-						fHandled = true;
-						break;
-
-					case 't':
-						this.setStatusBarMessage("'C-x r t' (prefix each line with a string) is not supported.");
-						this.keybindProgressMode = KeybindProgressMode.None;
-						fHandled = true;
-						break;
-
-					// Registers
-					case 's':
-						this.setStatusBarPermanentMessage("Copy to register:");
-						this.keybindProgressMode = KeybindProgressMode.RModeS;
-						fHandled = true;
-						break;
-
-					case 'i':
-						this.setStatusBarPermanentMessage("Insert register:");
-						this.keybindProgressMode = KeybindProgressMode.RModeI;
-						fHandled = true;
-						break;
-
-					default:
-						break;
-				}
-				break;
-
-			case KeybindProgressMode.RModeS:
-				this.setStatusBarPermanentMessage("");
-				this.saveTextToRegister(text);
-				this.keybindProgressMode = KeybindProgressMode.None;
-				fHandled = true;
-				break;
-
-			case KeybindProgressMode.RModeI:
-				this.setStatusBarPermanentMessage("");
-				this.restoreTextFromRegister(text);
-				this.keybindProgressMode = KeybindProgressMode.None;
-				fHandled = true;
-				break;
-
-			case KeybindProgressMode.AMode: // not supported [yet]
-			case KeybindProgressMode.MacroRecordingMode: // not supported [yet]
-			case KeybindProgressMode.None:
-			default:
-				this.keybindProgressMode = KeybindProgressMode.None;
-				this.setStatusBarPermanentMessage("");
-				break;
-		}
-
-		if (!fHandled) {
-			// default input handling: pass control to VSCode
-			vscode.commands.executeCommand('default:type', {
-				text: text
-			});
-		}
-		return;
-	}
-
-	saveTextToRegister(registerName: string): void {
-		if (null === registerName) {
-			return;
-		}
-		let range : vscode.Range = this.getSelectionRange();
-		if (range !== null) {
-			let selectedText = vscode.window.activeTextEditor.document.getText(range);
-			if (null !== selectedText) {
-				this.registersStorage[registerName] = RegisterContent.fromRegion(selectedText);
-			}
-		}
-		return;
-	}
-
-	restoreTextFromRegister(registerName: string): void {
-		vscode.commands.executeCommand("emacs.exitMarkMode"); // emulate Emacs
-		let obj : RegisterContent = this.registersStorage[registerName];
-		if (null === obj) {
-			this.setStatusBarMessage("Register does not contain text.");
-			return;
-		}
-		if (RegisterKind.KText === obj.getRegisterKind()) {
-			const content : string | vscode.Position | RectangleContent = obj.getRegisterContent();
-			if (typeof content === 'string') {
-				vscode.window.activeTextEditor.edit(editBuilder => {
-					editBuilder.insert(this.getSelection().active, content);
-				});
-			}
-		}
-		return;
 	}
 
 	deleteLine() : void {

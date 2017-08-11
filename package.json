@@ -639,11 +639,6 @@
                 "when": "editorTextFocus"
             },
             {
-                "key": "ctrl+x r",
-                "command": "emacs.C-x_r",
-                "when": "editorTextFocus"
-            },
-            {
                 "key": "ctrl+x ctrl+l",
                 "command": "editor.action.transformToLowercase",
                 "when": "editorTextFocus && !editorReadonly"

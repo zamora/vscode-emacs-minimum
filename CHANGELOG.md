@@ -1,3 +1,8 @@
+## 0.8.0 (2017-08-11)
+- Removed register mode, it was introducing too much typing latency
+- Extend C-l to also position cursor at top / center / bottom of viewport
+- Fix C-f to work in integrated terminal
+
 ## 0.7.0 (2017-07-15)
 - Change C-j to behave as similar as possible as ENTER
 - Add C-m as a C-j alias (in early emacs versions C-m breaks the line, not C-j)

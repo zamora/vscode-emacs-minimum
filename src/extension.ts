@@ -14,9 +14,6 @@ export function activate(context: vscode.ExtensionContext): void {
 
             // Navigation
             "C-l",
-
-            // R-Mode
-            "C-x_r"
         ],
         cursorMoves: string[] = [
             "cursorUp", "cursorDown", "cursorLeft", "cursorRight",
@@ -44,14 +41,6 @@ export function activate(context: vscode.ExtensionContext): void {
             })
         )
     });
-
-    // 'type' is not an "emacs." command and should be registered separately
-    context.subscriptions.push(vscode.commands.registerCommand("type", function (args) {
-		if (!vscode.window.activeTextEditor) {
-			return;
-		}
-		op.onType(args.text);
-    }));
 
     initMarkMode(context);
 }
