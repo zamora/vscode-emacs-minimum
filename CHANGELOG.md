@@ -1,3 +1,6 @@
+## 0.8.2 (2017-10-09)
+- Fix replaceOne shortcut to correctly only replace the currently selected match
+
 ## 0.8.1 (2017-10-09)
 - Do not close search widgtet on horizontal movement
 - Add shortcut for replace.

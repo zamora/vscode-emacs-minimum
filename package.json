@@ -3,7 +3,7 @@
     "displayName": "Emacs Friendly Keymap",
     "description": "Emacs keybindings and selection, friendly interaction with the system clipboard.",
     "icon": "emacs_pacifica.png",
-    "version": "0.8.1",
+    "version": "0.8.2",
     "publisher": "lfs",
     "homepage": "https://github.com/SebastianZaha/vscode-emacs-friendly",
     "repository": {
@@ -224,9 +224,9 @@
                 "when": "editorFocus"
             },
             {
-                "command": "search.action.replace",
+                "command": "editor.action.replaceOne",
                 "key": "ctrl+enter",
-                "when": "matchFocus && replaceActive && searchViewletVisible"
+                "when": "editorFocus && findWidgetVisible"
             },
             {
                 "key": "ctrl+s",
