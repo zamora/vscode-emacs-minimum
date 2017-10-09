@@ -37,11 +37,6 @@
                 "when": "editorTextFocus"
             },
             {
-                "key": "right",
-                "command": "closeFindWidget",
-                "when": "editorFocus && findWidgetVisible"
-            },
-            {
                 "key": "ctrl+f",
                 "command": "emacs.cursorRight",
                 "when": "editorTextFocus"
@@ -52,29 +47,14 @@
                 "when": "terminalFocus"
             },
             {
-                "key": "ctrl+f",
-                "command": "closeFindWidget",
-                "when": "editorFocus && findWidgetVisible"
-            },
-            {
                 "key": "left",
                 "command": "emacs.cursorLeft",
                 "when": "editorTextFocus"
             },
             {
-                "key": "left",
-                "command": "closeFindWidget",
-                "when": "editorFocus && findWidgetVisible"
-            },
-            {
                 "key": "ctrl+b",
                 "command": "emacs.cursorLeft",
                 "when": "editorTextFocus"
-            },
-            {
-                "key": "ctrl+b",
-                "command": "closeFindWidget",
-                "when": "editorFocus && findWidgetVisible"
             },
             {
                 "key": "up",
@@ -127,29 +107,14 @@
                 "when": "editorTextFocus"
             },
             {
-                "key": "home",
-                "command": "closeFindWidget",
-                "when": "editorFocus && findWidgetVisible"
-            },
-            {
                 "key": "ctrl+a",
                 "command": "emacs.cursorHome",
                 "when": "editorTextFocus"
             },
             {
-                "key": "ctrl+a",
-                "command": "closeFindWidget",
-                "when": "editorFocus && findWidgetVisible"
-            },
-            {
                 "key": "end",
                 "command": "emacs.cursorEnd",
                 "when": "editorTextFocus"
-            },
-            {
-                "key": "end",
-                "command": "closeFindWidget",
-                "when": "editorFocus && findWidgetVisible"
             },
             {
                 "key": "ctrl+e",
@@ -160,11 +125,6 @@
                 "key": "ctrl+e",
                 "command": "emacs.cursorEnd",
                 "when": "terminalFocus"
-            },
-            {
-                "key": "ctrl+e",
-                "command": "closeFindWidget",
-                "when": "editorFocus && findWidgetVisible"
             },
             {
                 "key": "alt+f",
@@ -172,19 +132,9 @@
                 "when": "editorTextFocus"
             },
             {
-                "key": "alt+f",
-                "command": "closeFindWidget",
-                "when": "editorFocus && findWidgetVisible"
-            },
-            {
                 "key": "alt+b",
                 "command": "emacs.cursorWordLeft",
                 "when": "editorTextFocus"
-            },
-            {
-                "key": "alt+b",
-                "command": "closeFindWidget",
-                "when": "editorFocus && findWidgetVisible"
             },
             {
                 "key": "pagedown",
@@ -251,6 +201,14 @@
                 "command": "workbench.action.gotoLine"
             },
             {
+                "key": "alt+g n",
+                "command": "editor.action.marker.next"
+            },
+            {
+                "key": "alt+g p",
+                "command": "editor.action.marker.prev"
+            },
+            {
                 "key": "alt+g g",
                 "command": "closeFindWidget",
                 "when": "editorFocus && findWidgetVisible"
@@ -259,6 +217,16 @@
                 "key": "ctrl+s",
                 "command": "actions.find",
                 "when": "!findWidgetVisible"
+            },
+            {
+                "key": "alt+shift+5",
+                "command": "editor.action.startFindReplaceAction",
+                "when": "editorFocus"
+            },
+            {
+                "command": "search.action.replace",
+                "key": "ctrl+enter",
+                "when": "matchFocus && replaceActive && searchViewletVisible"
             },
             {
                 "key": "ctrl+s",
@@ -286,19 +254,9 @@
                 "when": "editorTextFocus && !editorReadonly"
             },
             {
-                "key": "ctrl+d",
-                "command": "closeFindWidget",
-                "when": "editorFocus && findWidgetVisible"
-            },
-            {
                 "key": "ctrl+h",
                 "command": "deleteLeft",
                 "when": "editorTextFocus && !editorReadonly"
-            },
-            {
-                "key": "ctrl+h",
-                "command": "closeFindWidget",
-                "when": "editorFocus && findWidgetVisible"
             },
             {
                 "key": "alt+d",
@@ -306,19 +264,9 @@
                 "when": "editorTextFocus && !editorReadonly"
             },
             {
-                "key": "alt+d",
-                "command": "closeFindWidget",
-                "when": "editorFocus && findWidgetVisible"
-            },
-            {
                 "key": "ctrl+k",
                 "command": "emacs.C-k",
                 "when": "editorTextFocus && !editorReadonly"
-            },
-            {
-                "key": "ctrl+k",
-                "command": "closeFindWidget",
-                "when": "editorFocus && findWidgetVisible"
             },
             {
                 "key": "ctrl+w",
