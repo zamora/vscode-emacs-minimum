@@ -1,3 +1,9 @@
+## 0.8.1 (2017-10-09)
+- Do not close search widgtet on horizontal movement
+- Add shortcut for replace.
+- Add shortcuts for jump-to-next-error and jump-to-previous-error
+- Fix precondition for deleteWordLeft
+
 ## 0.8.0 (2017-08-11)
 - Removed register mode, it was introducing too much typing latency
 - Extend C-l to also position cursor at top / center / bottom of viewport

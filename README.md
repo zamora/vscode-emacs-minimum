@@ -14,89 +14,86 @@ The following are some of the changes and enhancements from the original:
 
 
 ### Move commands
-|Command | Status | Desc |
-|--------|--------|------|
-| `C-f` | OK | Move forward |
-| `C-b` | OK | Move backward |
-| `C-n` | OK | Move to the next line |
-| `C-p` | OK | Move to the previous line |
-| `C-a` | OK | Move to the beginning of line |
-| `C-e` | OK | Move to the end of line |
-| `M-f` | OK | Move forward by one word unit |
-| `M-b` | OK | Move backward by one word unit |
-| `M->` | OK | Move to the end of buffer |
-| `M-<` | OK | Move to the beginning of buffer |
-| `C-v` | OK | Scroll down by one screen unit |
-| `M-v` | OK | Scroll up by one screen unit |
-| `C-x C-n` | - | Set goal column |
-| `C-u C-x C-n` | - | Deactivate C-x C-n |
-| `M-g g` | OK | Jump to line (command palette) |
-| `C-l` | OK | Center screen on current line |
+|Command | Desc |
+|--------|------|
+| `C-f` | Move forward |
+| `C-b` | Move backward |
+| `C-n` | Move to the next line |
+| `C-p` | Move to the previous line |
+| `C-a` | Move to the beginning of line |
+| `C-e` | Move to the end of line |
+| `M-f` | Move forward by one word unit |
+| `M-b` | Move backward by one word unit |
+| `M->` | Move to the end of buffer |
+| `M-<` | Move to the beginning of buffer |
+| `C-v` | Scroll down by one screen unit |
+| `M-v` | Scroll up by one screen unit |
+| `M-g g` | Jump to line (command palette) |
+| `M-g n` | Jump to next error |
+| `M-g p` | Jump to previous error |
+| `C-l` |  Center screen on current line |
 
 
 ### Search Commands
-|Command | Status | Desc |
-|--------|--------|------|
-| `C-s` | OK | Search forward |
-| `C-r` | OK | Search backward |
-| `C-M-n` | OK | Add selection to next find match |
+|Command | Desc |
+|--------|------|
+| `C-s` | Search forward |
+| `C-r` | Search backward |
+| `A-%` | Replace |
+| `C-Enter` | Replace One Match (In replace dialog) |
+| `C-M-n` | Add selection to next find match |
+
 
 ### Edit commands
-|Command | Status | Desc |
-|--------|--------|------|
-| `C-d` | OK | Delete right (DEL) |
-| `C-h` | OK | Delete left (BACKSPACE) |
-| `M-d` | OK | Delete word |
-| `M-Bksp` | OK | Delete word left |
-| `C-k` | OK | Kill to line end |
-| `C-S-Bksp` | OK | Kill entire line |
-| `C-w` | OK | Kill region |
-| `M-w` | OK | Copy region to kill ring |
-| `C-y` | OK | Yank |
-| `C-j` | OK | Enter |
-| `C-m` | OK | Enter |
-| `C-i` | - | Horizontal Tab |
-| `C-x C-o` | OK | Delete blank lines around |
-| `C-x h` | OK | Select All |
-| `C-x u` (`C-/`)| OK | Undo |
-| `C-;` | △ | Toggle line comment in and out |
-| `M-;` | △ | Toggle region comment in and out |
-| `C-x C-l` | OK | Convert to lower case |
-| `C-x C-u` | OK | Convert to upper case |
+|Command | Desc |
+|--------|------|
+| `C-d` | Delete right (DEL) |
+| `C-h` | Delete left (BACKSPACE) |
+| `M-d` | Delete word |
+| `M-Bksp` | Delete word left |
+| `C-k` | Kill to line end |
+| `C-S-Bksp` | Kill entire line |
+| `C-w` | Kill region |
+| `M-w` | Copy region to kill ring |
+| `C-y` | Yank |
+| `C-j` | Enter |
+| `C-m` | Enter |
+| `C-x C-o` | Delete blank lines around |
+| `C-x h` | Select All |
+| `C-x u` (`C-/`)| Undo |
+| `C-;` | Toggle line comment in and out |
+| `M-;` | Toggle region comment in and out |
+| `C-x C-l` | Convert to lower case |
+| `C-x C-u` | Convert to upper case |
 
 ### Other Commands
-|Command | Status | Desc |
-|--------|--------|------|
-| `C-g` | OK | Cancel |
-| `C-space` | OK | Set mark |
-| `C-\` | - | IME control |
-| `C-quote` | OK | IntelliSense Suggestion |
-| `C-doublequote` | △ | IntelliSense Parameter Hint |
-| `M-x` | OK | Open command palette |
-| `M-/(dabbrev)` | - | Auto-completion |
-| `M-num command` | - | Repeat command `num` times |
-| `C-M-SPC` | OK | Toggle SideBar visibility |
+|Command | Desc |
+|--------|------|
+| `C-g` | Cancel |
+| `C-space` | Set mark |
+| `C-quote` | IntelliSense Suggestion |
+| `M-x` | Open command palette |
+| `C-M-SPC` | Toggle SideBar visibility |
 | `C-x z` | | Toggle Zen Mode |
 
 ### File Commands
-|Command | Status | Desc |
-|--------|--------|------|
-| `C-x C-s` | OK | Save |
-| `C-x C-w` | OK | Save as |
-| `C-x C-n` | OK | Open new window |
-| `C-x C-b` | - | Create new file and open |
+|Command | Desc |
+|--------|------|
+| `C-x C-s` | Save |
+| `C-x C-w` | Save as |
+| `C-x C-n` | Open new window |
 
 ### Tab / Buffer Manipulation Commands
-|Command | Status | Desc |
-|--------|--------|------|
-| `C-x b` | OK | Switch to another open buffer |
-| `C-x C-f` | OK | QuickOpen a file |
-| `C-x k` | OK | Close current tab (buffer) |
-| `C-x C-k` | OK | Close all tabs |
-| `C-x 1` | OK | Close editors in other (split) group.  |
-| `C-x 2` | OK | Split editor |
-| `C-x 3` | OK | Toggle split layout (vertical to horizontal) |
-| `C-x o` | OK | Focus other split editor |
+|Command | Desc |
+|--------|------|
+| `C-x b` | Switch to another open buffer |
+| `C-x C-f` | QuickOpen a file |
+| `C-x k` | Close current tab (buffer) |
+| `C-x C-k` | Close all tabs |
+| `C-x 1` | Close editors in other (split) group.  |
+| `C-x 2` | Split editor |
+| `C-x 3` | Toggle split layout (vertical to horizontal) |
+| `C-x o` | Focus other split editor |
 
 ## Conflicts with default key bindings
 - `ctrl+d`: editor.action.addSelectionToNextFindMatch => **Use `ctrl+alt+n` instead**;
