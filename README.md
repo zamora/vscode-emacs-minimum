@@ -18,7 +18,13 @@ But removes most of keybindings only keep minimum **Move commands**.
 | `C-M-b` | Move backward by one word unit |
 | `M->` | Move to the end of buffer |
 | `M-<` | Move to the beginning of buffer |
+| `C-l` |  Center screen on current line |
 
+### Edit commands
+|Command | Desc |
+|--------|------|
+| `C-M-k` | Delete all right |
+| `M-backspace` | Delete all left |
 
 ## Conflicts with default key bindings
 - `ctrl+a`: workbench.action.selectAll => **Use `alt+a` instead**.

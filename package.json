@@ -3,7 +3,7 @@
     "displayName": "Emacs Mininum Keymap",
     "description": "Emacs keybindings for only cursor moves.",
     "icon": "emacs_pacifica.png",
-    "version": "1.0.3",
+    "version": "1.1.0",
     "publisher": "jamesyang999",
     "homepage": "https://github.com/futurist/vscode-emacs-minimum",
     "repository": {
@@ -33,25 +33,30 @@
         "keybindings": [
             {
                 "key": "alt+a",
+                "mac": "cmd+a",
                 "command": "editor.action.selectAll",
                 "when": "editorTextFocus"
             },
             {
                 "key": "alt+b",
+                "mac": "cmd+b",
                 "command": "editor.action.toggleSidebarVisibility"
             },
             {
                 "key": "alt+f",
+                "mac": "cmd+f",
                 "command": "actions.find",
                 "when": "!findWidgetVisible"
             },
             {
                 "key": "alt+f",
+                "mac": "cmd+f",
                 "command": "editor.action.nextMatchFindAction",
                 "when": "findWidgetVisible"
             },
             {
                 "key": "alt+p",
+                "mac": "cmd+p",
                 "command": "workbench.action.quickOpen"
             },
             {
@@ -60,7 +65,18 @@
             },
             {
                 "key": "alt+n",
+                "mac": "cmd+n",
                 "command": "workbench.action.files.newUntitledFile"
+            },
+            {
+                "key": "alt+backspace",
+                "mac": "cmd+backspace",
+                "command": "deleteAllLeft"
+            },
+            {
+                "key": "ctrl+alt+k",
+                "mac": "ctrl+cmd+k",
+                "command": "deleteAllRight"
             },
             {
                 "key": "right",
@@ -236,6 +252,11 @@
                 "key": "alt+shift+,",
                 "command": "closeFindWidget",
                 "when": "editorFocus && findWidgetVisible"
+            },
+            {
+                "key": "ctrl+l",
+                "command": "emacs.C-l",
+                "when": "editorTextFocus"
             }
         ]
     },
