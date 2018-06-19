@@ -26,7 +26,7 @@ But removes most of keybindings only keep minimum **Move commands**.
 - `ctrl+f`: actions.find => **Use `alt+f` instead**;
 - `ctrl+p` & `ctrl+e`: workbench.action.quickOpen => **Use `alt+p`, `alt+e` instead**;
 - `ctrl+p`: workbench.action.quickOpenNavigateNext => **Use `ctrl+n` instead**.
-- `ctrl+n`: workbench.action.newWindow => **Use `alt+n` instead**;
+- `ctrl+n`: workbench.action.files.newUntitledFile => **Use `alt+n` instead**;
 
 # More information
 
