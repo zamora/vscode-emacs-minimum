@@ -3,7 +3,7 @@
     "displayName": "Emacs Mininum Keymap",
     "description": "Emacs keybindings for only cursor moves.",
     "icon": "emacs_pacifica.png",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "publisher": "jamesyang999",
     "homepage": "https://github.com/futurist/vscode-emacs-minimum",
     "repository": {
@@ -60,7 +60,7 @@
             },
             {
                 "key": "alt+n",
-                "command": "workbench.action.newWindow"
+                "command": "workbench.action.files.newUntitledFile"
             },
             {
                 "key": "right",
