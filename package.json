@@ -3,7 +3,7 @@
     "displayName": "Emacs Mininum Keymap",
     "description": "Emacs keybindings for only cursor moves.",
     "icon": "emacs_pacifica.png",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "publisher": "jamesyang999",
     "homepage": "https://github.com/futurist/vscode-emacs-minimum",
     "repository": {
@@ -207,7 +207,6 @@
                 "command": "workbench.action.quickOpenNavigateNext",
                 "when": "inQuickOpen"
             },
-            
             {
                 "key": "ctrl+alt+f",
                 "command": "emacs.cursorWordRight",
@@ -218,7 +217,6 @@
                 "command": "emacs.cursorWordLeft",
                 "when": "editorTextFocus"
             },
-
             {
                 "key": "alt+shift+.",
                 "command": "emacs.cursorBottom",
