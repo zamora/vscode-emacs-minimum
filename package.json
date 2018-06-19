@@ -3,7 +3,7 @@
     "displayName": "Emacs Mininum Keymap",
     "description": "Emacs keybindings for only cursor moves.",
     "icon": "emacs_pacifica.png",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "publisher": "jamesyang999",
     "homepage": "https://github.com/futurist/vscode-emacs-minimum",
     "repository": {
@@ -74,8 +74,7 @@
                 "command": "deleteAllLeft"
             },
             {
-                "key": "ctrl+alt+k",
-                "mac": "ctrl+cmd+k",
+                "key": "alt+k",
                 "command": "deleteAllRight"
             },
             {

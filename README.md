@@ -23,7 +23,7 @@ But removes most of keybindings only keep minimum **Move commands**.
 ### Edit commands
 |Command | Desc |
 |--------|------|
-| `C-M-k` | Delete all right |
+| `M-k` | Delete all right |
 | `M-backspace` | Delete all left |
 
 ## Conflicts with default key bindings
