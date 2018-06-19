@@ -59,6 +59,10 @@
                 "command": "workbench.action.quickOpen"
             },
             {
+                "key": "alt+n",
+                "command": "workbench.action.newWindow"
+            },
+            {
                 "key": "right",
                 "command": "emacs.cursorRight",
                 "when": "editorTextFocus"
