@@ -83,6 +83,11 @@
                 "when": "editorTextFocus"
             },
             {
+                "key": "ctrl+d",
+                "command": "deleteRight",
+                "when": "editorTextFocus"
+            },
+            {
                 "key": "ctrl+f",
                 "command": "emacs.cursorRight",
                 "when": "editorTextFocus"
