@@ -3,14 +3,14 @@
     "displayName": "Emacs Mininum Keymap",
     "description": "Emacs keybindings for only cursor moves.",
     "icon": "emacs_pacifica.png",
-    "version": "1.1.1",
-    "publisher": "jamesyang999",
-    "homepage": "https://github.com/futurist/vscode-emacs-minimum",
+    "version": "1.1.2",
+    "publisher": "zamora",
+    "homepage": "https://github.com/zamora/vscode-emacs-minimum",
     "repository": {
         "type": "git",
-        "url": "https://github.com/futurist/vscode-emacs-minimum"
+        "url": "https://github.com/zamora/vscode-emacs-minimum"
     },
-    "bugs": "https://github.com/futurist/vscode-emacs-minimum/issues",
+    "bugs": "https://github.com/zamora/vscode-emacs-minimum/issues",
     "engines": {
         "vscode": "^1.11.0"
     },
